@@ -10,6 +10,7 @@ var bricks = [];
 var paddleWidth, paddleHeight, bricksNumX, bricksNumY;
 var brickWidth, brickHeight, brickMargin, paddleX;
 var ballX, ballY, ballVx, ballVy;
+var gravityY;
 var restart = true;
 
 for (var y=0; y<20; y++) {
@@ -27,6 +28,7 @@ function setValues() {
   brickWidth = canvas.width / bricksNumX;
   brickHeight = 20;
   brickMargin = 4;
+  gravityY = 1;
 }
 
 function init() {
@@ -119,7 +121,8 @@ function tick() {
   setValues();
   clear();
   drawPaddle();
-  
+
+  ballVy += gravityY;
   ballX += ballVx;
   ballY += ballVy;
   
